@@ -13,13 +13,22 @@ public class Player {
     }
     public boolean CollisionCheck()
     {
-        if(hitbox.intersects(Zug.ZugBox))
+        for(int i=0; i<Lane.length;i++)
+        {
+        for(int j=0; j<Lane[i].Zuge.length;j++)
+        {
+        if(hitbox.intersects(zuge[j].Zug.ZugBox))
         {
             return true;
         }
-        if(hitbox.intersects(Auto.Auto))
+        }
+        for(int j=0;j<Lane[i].Autos.length;j++)
+        {
+        if(hitbox.intersects(Autos[j].Auto.Auto))
         {
             return true;
+        }
+        }
         }
     }
     public void bewegen() {
