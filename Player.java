@@ -17,7 +17,7 @@ public class Player {
         {
             boolean Collision=true;
         }
-        if(hitbox.intersects(Auto.Rectangle))
+        if(hitbox.intersects(Auto.Auto))
         {
             boolean Collision=true;
         }
