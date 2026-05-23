@@ -11,6 +11,10 @@ public class Main extends JPanel implements Runnable {
         {
             Autos[i].bewegen();
         }
+        for(int i;i<zuge.length;i++)
+        {
+            zuge[i].bewegen();
+        }
     }
 
     @Override
