@@ -15,9 +15,9 @@ public class Main extends JPanel implements Runnable {
         {
             Autos[j].bewegen();
         }
-       for(int j;j<Lane[i].zuge.length;j++)
+       for(int j=0;j<Lane[i].zuge.length;j++)
         {
-            zuge[j].bewegen();
+            Lane[i].zuge[j].bewegen();
         }
         }
     }
