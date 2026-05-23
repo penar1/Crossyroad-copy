@@ -12,7 +12,7 @@ public class Auto extends Gegner{
 
     }
 
-    @Override
+
     public void bewegen(String Richtung) {
         if(Richtung == "Rechts")
         {
