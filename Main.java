@@ -6,7 +6,20 @@ public class Main extends JPanel implements Runnable {
 
 
     public void update() {
-
+        Player.Collisioncheck();
+        for(int i=0;i<Lane.length;i++)
+        {
+            
+        
+        for(int j=0;j<Lane[i].Autos.length;j++)
+        {
+            Autos[j].bewegen();
+        }
+       for(int j=0;j<Lane[i].zuge.length;j++)
+        {
+            Lane[i].zuge[j].bewegen();
+        }
+        }
     }
 
     @Override
