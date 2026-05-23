@@ -6,7 +6,7 @@ public class Main extends JPanel implements Runnable {
 
 
     public void update() {
-
+        Player.Collisioncheck();
     }
 
     @Override
