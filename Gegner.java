@@ -5,7 +5,7 @@ public class Gegner {
 
   public void bewegen() 
   {
-        Xposition = Xposition + Geschwindigkeit;
+        Xposition = Xposition - Geschwindigkeit;
     }
   
 }
