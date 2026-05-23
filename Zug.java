@@ -13,5 +13,6 @@ public void Zug()
     catch (InterruptedException e) {
         e.printStackTrace();
     }
+        bewegen();
 }
 }
