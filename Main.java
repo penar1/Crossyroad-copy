@@ -7,13 +7,18 @@ public class Main extends JPanel implements Runnable {
 
     public void update() {
         Player.Collisioncheck();
-        for(int i=0;i<Autos.length;i++)
+        for(int i=0;i<Lane.length;i++)
         {
-            Autos[i].bewegen();
+            
+        
+        for(int j=0;j<Lane[i].Autos.length;j++)
+        {
+            Autos[j].bewegen();
         }
-        for(int i;i<zuge.length;i++)
+       for(int j;j<Lane[i].zuge.length;j++)
         {
-            zuge[i].bewegen();
+            zuge[j].bewegen();
+        }
         }
     }
 
