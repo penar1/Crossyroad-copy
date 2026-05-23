@@ -15,11 +15,11 @@ public class Player {
     {
         if(hitbox.intersects(Zug.ZugBox))
         {
-            boolean Collision=true;
+            return true;
         }
         if(hitbox.intersects(Auto.Auto))
         {
-            boolean Collision=true;
+            return true;
         }
     }
     public void bewegen() {
