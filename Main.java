@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Main extends JPanel implements Runnable {
     static World world;
-    Player player;
+    static Player player;
 
     public void update() {
         player.CollisionCheck();
@@ -52,8 +52,8 @@ public class Main extends JPanel implements Runnable {
     }
 
     public static void main(String[] args) {
-        World world = new World();
-        Player player = new Player( 400, 60);
+        Main.world = new World();
+        Main.player = new Player( 400, 60);
         JFrame window = new JFrame();
 
         Main game = new Main();
