@@ -21,9 +21,6 @@ public class Player {
         {
             return true;
         }
-        else{
-            return false;
-        }
         }
         for(int j = 0; j< Main.world.Lane[i].Autos.length; j++)
         {
@@ -31,11 +28,9 @@ public class Player {
         {
             return true;
         }
-        else{
-            return false;
         }
         }
-        }
+        return false;
     }
     public void bewegen() {
         score = score+1;

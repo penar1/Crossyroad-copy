@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.Graphics;
+import java.awt.*;
 
 public class Main extends JPanel implements Runnable {
     static World world;
@@ -9,8 +10,6 @@ public class Main extends JPanel implements Runnable {
         player.CollisionCheck();
         for(int i=0;i<world.Lane.length;i++)
         {
-            
-        
         for(int j=0;j<world.Lane[i].Autos.length;j++)
         {
             world.Lane[i].Autos[j].bewegen();
@@ -25,7 +24,9 @@ public class Main extends JPanel implements Runnable {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.drawString("Score: " + player.score, 10, 30);
         g.fillRect(
                 Player.hitbox.x,
                 Player.hitbox.y,
