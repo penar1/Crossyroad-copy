@@ -13,20 +13,26 @@ public class Player {
     }
     public boolean CollisionCheck()
     {
-        for(int i=0; i<Lane.length;i++)
+        for(int i=0; i<Main.world.Lane.length;i++)
         {
-        for(int j=0; j<Lane[i].Zuge.length;j++)
+        for(int j = 0; j< Main.world.Lane[i].Zuge.length; j++)
         {
-        if(hitbox.intersects(zuge[j].Zug.ZugBox))
+        if(hitbox.intersects(Main.world.Lane[i].Zuge[j].ZugBox))
         {
             return true;
         }
+        else{
+            return false;
         }
-        for(int j=0;j<Lane[i].Autos.length;j++)
+        }
+        for(int j = 0; j< Main.world.Lane[i].Autos.length; j++)
         {
-        if(hitbox.intersects(Autos[j].Auto.Auto))
+        if(hitbox.intersects(Main.world.Lane[i].Autos[j].Auto))
         {
             return true;
+        }
+        else{
+            return false;
         }
         }
         }

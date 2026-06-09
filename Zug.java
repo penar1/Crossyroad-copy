@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Zug extends Gegner{
 
 Rectangle ZugBox;
@@ -5,11 +7,12 @@ int Geschwindigkeit=80;
 int XPosition=800;
 public Zug()
 {
-    ZugBox= new Rectangle(XPosition, YPosition, 120, 100);
-    try {
-    Thread.sleep((int)(Math.random() * 10000) + 4000);
-    catch (InterruptedException e) {
-        e.printStackTrace();
+    ZugBox= new Rectangle(XPosition, Yposition, 120, 100);
+    long start = System.currentTimeMillis();
+
+    while(System.currentTimeMillis() - start < ((int) Math.random()*4000) +1)
+    {
+
     }
         bewegen();
 }

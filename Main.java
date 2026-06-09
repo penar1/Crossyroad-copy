@@ -2,22 +2,22 @@ import javax.swing.*;
 import java.awt.Graphics;
 
 public class Main extends JPanel implements Runnable {
-
-
+    static World world;
+    Player player;
 
     public void update() {
-        Player.Collisioncheck();
-        for(int i=0;i<Lane.length;i++)
+        player.CollisionCheck();
+        for(int i=0;i<world.Lane.length;i++)
         {
             
         
-        for(int j=0;j<Lane[i].Autos.length;j++)
+        for(int j=0;j<world.Lane[i].Autos.length;j++)
         {
-            Autos[j].bewegen();
+            world.Lane[i].Autos[j].bewegen();
         }
-       for(int j=0;j<Lane[i].zuge.length;j++)
+       for(int j=0;j<world.Lane[i].Zuge.length;j++)
         {
-            Lane[i].zuge[j].bewegen();
+            world.Lane[i].Zuge[j].bewegen();
         }
         }
     }
@@ -51,7 +51,8 @@ public class Main extends JPanel implements Runnable {
     }
 
     public static void main(String[] args) {
-
+        World world = new World();
+        Player player = new Player( 400, 60);
         JFrame window = new JFrame();
 
         Main game = new Main();

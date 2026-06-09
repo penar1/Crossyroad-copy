@@ -1,6 +1,6 @@
 public class World {
 
-  Lanes[] Lane = new Lanes[5];
+  public Lanes[] Lane = new Lanes[5];
 
 public void World() {
   for (int i = 0; i < Lane.length; i++) {
