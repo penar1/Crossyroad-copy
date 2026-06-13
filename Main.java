@@ -34,9 +34,7 @@ public class Main extends JPanel implements Runnable {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString("Score: " + player.score, 10, 30);
+
         g.setColor(Color.BLUE);
         g.fillRect(
                 Player.hitbox.x,
@@ -47,7 +45,9 @@ public class Main extends JPanel implements Runnable {
         for (int i = 0; i < world.Lane.length; i++) {
             world.Lane[i].draw(g);
         }
-
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.drawString("Score: " + player.score, 10, 30);
 
 
     }

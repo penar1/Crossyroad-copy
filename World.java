@@ -6,7 +6,14 @@ public void World() {
     Lane = new Lanes[5];
     for (int i = 0; i < Lane.length; i++) {
     Lane[i] = new Lanes();
-    Lane[i].Lanes(0, 120 + i * 120);
+    if(i!=0)
+    {
+        Lane[i].Lanes(0, 120 + i * 120);
+    }
+    else
+    {
+        Lane[i].Lanes(0,0);
+    }
     Lane[i].settype((int) (Math.random() * 3));
     Lane[i].GegnerGen();
   }
