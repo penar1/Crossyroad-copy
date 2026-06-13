@@ -9,6 +9,7 @@ public class Player {
     boolean Collision=false;
 
     public Player(int x, int y) {
+        speed=60;
         hitbox = new Rectangle(x, y, 50, 50);
     }
     public boolean CollisionCheck()
