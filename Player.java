@@ -15,20 +15,24 @@ public class Player {
     {
         for(int i=0; i<Main.world.Lane.length;i++)
         {
-        for(int j = 0; j< Main.world.Lane[i].Zuge.length; j++)
-        {
-        if(hitbox.intersects(Main.world.Lane[i].Zuge[j].ZugBox))
-        {
-            return true;
-        }
-        }
-        for(int j = 0; j< Main.world.Lane[i].Autos.length; j++)
-        {
-        if(hitbox.intersects(Main.world.Lane[i].Autos[j].Auto))
-        {
-            return true;
-        }
-        }
+            if(Main.world.Lane[i].type==2) {
+                for(int j=0; j<Main.world.Lane[i].Zuge.length;j++) {
+                    if(Main.world.Lane[i].Zuge[j]!=null&&Main.world.Lane[i].Zuge[j].ZugBox!=null) {
+                        if (hitbox.intersects(Main.world.Lane[i].Zuge[j].ZugBox)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            if(Main.world.Lane[i].type==1) {
+                for (int j = 0; j < Main.world.Lane[i].Autos.length; j++) {
+                    if (Main.world.Lane[i].Autos[j] != null && Main.world.Lane[i].Autos[j].Auto != null) {
+                        if (hitbox.intersects(Main.world.Lane[i].Autos[j].Auto)) {
+                            return true;
+                        }
+                    }
+                }
+            }
         }
         return false;
     }

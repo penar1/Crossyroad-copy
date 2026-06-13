@@ -5,13 +5,15 @@ public class Lanes {
     int type;
     //anzahl züge
     
-    public Auto[] Autos = new Auto[3];
-    public Zug[] Zuge = new Zug[5];
-    static Rectangle g;
+    public Auto[] Autos;
+    public Zug[] Zuge;
+    Rectangle LaneBox;
 
     public void Lanes(int x, int y)
     {
-        g =  new Rectangle(x, y, 800, 600/5);
+        Autos = new Auto[3];
+        Zuge = new Zug[5];
+        LaneBox =  new Rectangle(x, y, 800, 600/5);
     }
 
     public void draw(Graphics g)
@@ -28,6 +30,19 @@ public class Lanes {
                 g.setColor(Color.DARK_GRAY);
                 break;
         }
+        g.fillRect(
+                LaneBox.x,
+                LaneBox.y,
+                LaneBox.width,
+                LaneBox.height
+        );
+        g.setColor(Color.BLACK);
+        g.drawRect(
+                LaneBox.x,
+                LaneBox.y,
+                LaneBox.width,
+                LaneBox.height
+        );
     }
 
         //random bodenart
