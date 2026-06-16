@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Main extends JPanel implements Runnable {
     static World world;
@@ -10,40 +11,30 @@ public class Main extends JPanel implements Runnable {
     boolean rightPressed = false;
     boolean upPressed = false;
     boolean downPressed = false;
-    public Main() {
+
+    public Main()
+    {
         setFocusable(true);
 
-        addKeyListener(new java.awt.event.KeyAdapter() {
+        addKeyListener(new java.awt.event.KeyAdapter()
+        {
             @Override
-            public void keyPressed(java.awt.event.KeyEvent e) {
-                switch (e.getKeyCode()) {
-                    case java.awt.event.KeyEvent.VK_A -> leftPressed = true;
-                    case java.awt.event.KeyEvent.VK_D -> rightPressed = true;
-                    case java.awt.event.KeyEvent.VK_W -> upPressed = true;
-                    case java.awt.event.KeyEvent.VK_S -> downPressed = true;
-                }
-            }
-
-            @Override
-            public void keyReleased(java.awt.event.KeyEvent e) {
-                switch (e.getKeyCode()) {
-                    case java.awt.event.KeyEvent.VK_A -> leftPressed = false;
-                    case java.awt.event.KeyEvent.VK_D -> rightPressed = false;
-                    case java.awt.event.KeyEvent.VK_W -> upPressed = false;
-                    case java.awt.event.KeyEvent.VK_S -> downPressed = false;
-                }
+            public void keyPressed(KeyEvent e)
+            {
+                if (e.getKeyCode() == KeyEvent.VK_A) player.x -= 120;
+                if (e.getKeyCode() == KeyEvent.VK_W) player.y -= 120;
+                if (e.getKeyCode() == KeyEvent.VK_S) player.y += 120;
+                if (e.getKeyCode() == KeyEvent.VK_D) player.x += 120;
             }
         });
     }
 
     public void update() {
         player.CollisionCheck();
-        System.out.println(player.x);
-        if (leftPressed) player.x -= player.speed;
-        if (rightPressed) player.x += player.speed;
-        if (upPressed) player.y -= player.speed;
-        if (downPressed) player.y += player.speed;
 
+
+        player.hitbox.x = player.x;
+        player.hitbox.y = player.y;
         for(int i=0;i<world.Lane.length;i++)
         {
             if(world.Lane[i].type==1)
@@ -85,6 +76,19 @@ public class Main extends JPanel implements Runnable {
                 Player.hitbox.width,
                 Player.hitbox.height
         );
+        g.setColor(Color.cyan);
+        for(int i=0; i<world.Lane.length; i++)
+        {
+            for(int j=0; j<world.Lane[i].Autos.length; j++)
+            {
+                g.drawRect(
+                        world.Lane[i].Autos[j].Auto.x,
+                        world.Lane[i].Autos[j].Auto.y,
+                        world.Lane[i].Autos[j].Auto.width,
+                        world.Lane[i].Autos[j].Auto.height
+                );
+            }
+        }
     }
 
     @Override
@@ -105,7 +109,7 @@ public class Main extends JPanel implements Runnable {
 
     public static void main(String[] args) {
         Main.world = new World();
-        Main.player = new Player(375, 500);
+        Main.player = new Player(370, 500);
         Main.zug = new Zug();
         JFrame window = new JFrame();
 
