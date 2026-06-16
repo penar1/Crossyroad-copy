@@ -9,10 +9,15 @@ public class Lanes {
     public Zug[] Zuge;
     Rectangle LaneBox;
 
+    public Lanes()
+    {
+        settype((int) (Math.random() * 3));
+        GegnerGen();
+
+    }
+
     public void Lanes(int x, int y)
     {
-        Autos = new Auto[3];
-        Zuge = new Zug[5];
         LaneBox =  new Rectangle(x, y, 800, 600/5);
     }
 
@@ -63,12 +68,14 @@ public class Lanes {
                     //eine Straße hat auto
                     //diese werden in einem array gespeichert
                 case 1:
+                    Autos = new Auto[3];
                     for(int i =0; i<Autos.length; i++)
                         {
                             Autos[i] = new Auto();
                         }
                     break;
                 case 2:
+                    Zuge = new Zug[5];
                     for(int k=0; k<Zuge.length; k++)
                         {
                             Zuge[k] = new Zug();

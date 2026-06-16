@@ -1,12 +1,16 @@
+import javax.imageio.*;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.*;
 
 public class Main extends JPanel implements Runnable {
     static World world;
     static Player player;
     static Zug zug;
+    private Image Frosch;
+    public Image Gras;
     boolean leftPressed = false;
     boolean rightPressed = false;
     boolean upPressed = false;
@@ -15,6 +19,13 @@ public class Main extends JPanel implements Runnable {
     public Main()
     {
         setFocusable(true);
+
+        try {
+            Frosch = ImageIO.read(new File("Frog(Normal).png"));
+            Gras = ImageIO.read(new File("Gras(normal).png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         addKeyListener(new java.awt.event.KeyAdapter()
         {
@@ -70,23 +81,28 @@ public class Main extends JPanel implements Runnable {
         g.drawString("Score: " + player.score, 10, 30);
 
         g.setColor(Color.BLUE);
-        g.fillRect(
-                Player.hitbox.x,
-                Player.hitbox.y,
-                Player.hitbox.width,
-                Player.hitbox.height
-        );
+        if(Frosch != null)
+        {
+            g.drawImage(Frosch, player.x, player.y, 64, 64, this);
+        }
+//        g.fillRect(
+//                Player.hitbox.x,
+//                Player.hitbox.y,
+//                Player.hitbox.width,
+//                Player.hitbox.height
+//        );
         g.setColor(Color.cyan);
         for(int i=0; i<world.Lane.length; i++)
         {
-            for(int j=0; j<world.Lane[i].Autos.length; j++)
-            {
-                g.drawRect(
-                        world.Lane[i].Autos[j].Auto.x,
-                        world.Lane[i].Autos[j].Auto.y,
-                        world.Lane[i].Autos[j].Auto.width,
-                        world.Lane[i].Autos[j].Auto.height
-                );
+            if(world.Lane[i].type == 1) {
+                for (int j = 0; j < world.Lane[i].Autos.length; j++) {
+                    g.fillRect(
+                            world.Lane[i].Autos[j].Auto.x,
+                            world.Lane[i].Autos[j].Auto.y,
+                            world.Lane[i].Autos[j].Auto.width,
+                            world.Lane[i].Autos[j].Auto.height
+                    );
+                }
             }
         }
     }
@@ -109,13 +125,13 @@ public class Main extends JPanel implements Runnable {
 
     public static void main(String[] args) {
         Main.world = new World();
+        world.World();
         Main.player = new Player(370, 500);
-        Main.zug = new Zug();
         JFrame window = new JFrame();
 
 
         Main game = new Main();
-        world.World();
+
         window.add(game);
 
         window.setSize(800, 600);

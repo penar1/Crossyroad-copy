@@ -14,9 +14,7 @@ public void World() {
     {
         Lane[i].Lanes(0,0);
     }
-    Lane[i].settype((int) (Math.random() * 3));
-    Lane[i].GegnerGen();
-  }
+    }
 }
   public void LaneGen()
   {
