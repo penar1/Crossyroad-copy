@@ -1,10 +1,14 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class Lanes {
     //variable um die verschiedenen bodenarten zu unterscheiden
     int type;
     //anzahl züge
-    
+    Image Gras;
+
     public Auto[] Autos;
     public Zug[] Zuge;
     Rectangle LaneBox;
@@ -13,6 +17,11 @@ public class Lanes {
     {
         settype((int) (Math.random() * 3));
         GegnerGen();
+        try {
+            Gras = ImageIO.read(new File("Gras(normal).png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -26,7 +35,10 @@ public class Lanes {
 
         switch (type) {
             case 0:
-                g.setColor(Color.GREEN);
+
+                if(Gras!=null) {
+                    g.drawImage(Gras, LaneBox.x, LaneBox.y, 800, 120, null);
+                }
                 break;
             case 1:
                 g.setColor(Color.GRAY);
