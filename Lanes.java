@@ -25,7 +25,7 @@ public class Lanes {
 
     }
 
-    public void Lanes(int x, int y)
+    public void Lane(int x, int y)
     {
         LaneBox =  new Rectangle(x, y, 800, 600/5);
     }
@@ -84,6 +84,7 @@ public class Lanes {
                     for(int i =0; i<Autos.length; i++)
                         {
                             Autos[i] = new Auto();
+
                         }
                     break;
                 case 2:

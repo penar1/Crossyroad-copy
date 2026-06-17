@@ -96,12 +96,14 @@ public class Main extends JPanel implements Runnable {
         {
             if(world.Lane[i].type == 1) {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++) {
-                    g.fillRect(
-                            world.Lane[i].Autos[j].Auto.x,
-                            world.Lane[i].Autos[j].Auto.y,
-                            world.Lane[i].Autos[j].Auto.width,
-                            world.Lane[i].Autos[j].Auto.height
-                    );
+                    if(world.Lane[i].Autos[j].AutoBox!=null) {
+                        g.fillRect(
+                                world.Lane[i].Autos[j].AutoBox.x,
+                                world.Lane[i].Autos[j].AutoBox.y,
+                                world.Lane[i].Autos[j].AutoBox.width,
+                                world.Lane[i].Autos[j].AutoBox.height
+                        );
+                    }
                 }
             }
         }

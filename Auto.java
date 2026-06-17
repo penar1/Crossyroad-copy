@@ -4,11 +4,11 @@ public class Auto extends Gegner{
 
     int Geschwindigkeit=50;
 
-    Rectangle Auto;
+    Rectangle AutoBox;
 
     public Auto()
     {
-        Rectangle Auto = new Rectangle( Xposition,  Yposition, 120, 90);
+        Rectangle AutoBox = new Rectangle( Xposition,  Yposition, 120, 90);
 
     }
 

@@ -27,8 +27,8 @@ public class Player {
             }
             if(Main.world.Lane[i].type==1) {
                 for (int j = 0; j < Main.world.Lane[i].Autos.length; j++) {
-                    if (Main.world.Lane[i].Autos[j] != null && Main.world.Lane[i].Autos[j].Auto != null) {
-                        if (hitbox.intersects(Main.world.Lane[i].Autos[j].Auto)) {
+                    if (Main.world.Lane[i].Autos[j] != null && Main.world.Lane[i].Autos[j].AutoBox != null) {
+                        if (hitbox.intersects(Main.world.Lane[i].Autos[j].AutoBox)) {
                             return true;
                         }
                     }
