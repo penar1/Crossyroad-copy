@@ -6,16 +6,8 @@ public void World() {
     Lane = new Lanes[5];
     for (int i = 0; i < Lane.length; i++) {
     Lane[i] = new Lanes();
-
-    if(i!=0)
-    {
-        Lane[i].Lane(0, 120 + i * 120);
-    }
-    else
-    {
-        Lane[i].Lane(0,0);
-    }
-        Lane[i].GegnerGen();
+    Lane[i].Lane(0, i * 120);
+    Lane[i].GegnerGen();
     }
 }
   public void LaneGen()

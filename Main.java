@@ -44,6 +44,7 @@ public class Main extends JPanel implements Runnable {
         player.CollisionCheck();
 
 
+
         player.hitbox.x = player.x;
         player.hitbox.y = player.y;
         for(int i=0;i<world.Lane.length;i++)
@@ -53,6 +54,9 @@ public class Main extends JPanel implements Runnable {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++)
                 {
                     world.Lane[i].Autos[j].bewegen();
+                    world.Lane[i].Autos[j].Xposition=world.Lane[i].Autos[j].GegnerBox.x;
+                    world.Lane[i].Autos[j].Yposition=world.Lane[i].Autos[j].GegnerBox.y;
+
                 }
             }
             if(world.Lane[i].type==2)
@@ -96,12 +100,12 @@ public class Main extends JPanel implements Runnable {
         {
             if(world.Lane[i].type == 1) {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++) {
-                    if(world.Lane[i].Autos[j].AutoBox!=null) {
+                    if(world.Lane[i].Autos[j].GegnerBox!=null) {
                         g.fillRect(
-                                world.Lane[i].Autos[j].AutoBox.x,
-                                world.Lane[i].Autos[j].AutoBox.y,
-                                world.Lane[i].Autos[j].AutoBox.width,
-                                world.Lane[i].Autos[j].AutoBox.height
+                                world.Lane[i].Autos[j].GegnerBox.x,
+                                world.Lane[i].Autos[j].GegnerBox.y,
+                                world.Lane[i].Autos[j].GegnerBox.width,
+                                world.Lane[i].Autos[j].GegnerBox.height
                         );
                     }
                 }

@@ -3,25 +3,17 @@ import java.awt.*;
 
 public class Auto extends Gegner{
 
-    int Geschwindigkeit=50;
+    int Geschwindigkeit=5;
 
-    Rectangle AutoBox;
-
-    public Auto()
+    public Auto(int x, int y)
     {
-        AutoBox = new Rectangle( 0,  Yposition, 120, 90);
+        GegnerBox = new Rectangle( x,  y, 120, 90);
 
     }
 
 
-    public void bewegen(String Richtung) {
-        if(Richtung == "Rechts")
-        {
-            Xposition += Geschwindigkeit;
-        }
-        if(Richtung == "Links")
-        {
-           Xposition -= Geschwindigkeit;
-        }
+    public void bewegen() {
+        GegnerBox.x += Geschwindigkeit;
+
     }
 }

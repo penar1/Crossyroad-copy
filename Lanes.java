@@ -83,8 +83,8 @@ public class Lanes {
                     Autos = new Auto[3];
                     for(int i =0; i<Autos.length; i++)
                         {
-                            Autos[i] = new Auto();
-                            Autos[i].Yposition = LaneBox.y;
+                            Autos[i] = new Auto(i*-300, LaneBox.y);
+
 
                         }
                     break;

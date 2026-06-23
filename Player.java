@@ -20,6 +20,7 @@ public class Player {
                 for(int j=0; j<Main.world.Lane[i].Zuge.length;j++) {
                     if(Main.world.Lane[i].Zuge[j]!=null&&Main.world.Lane[i].Zuge[j].ZugBox!=null) {
                         if (hitbox.intersects(Main.world.Lane[i].Zuge[j].ZugBox)) {
+                            System.out.println("ja");
                             return true;
                         }
                     }
@@ -27,8 +28,8 @@ public class Player {
             }
             if(Main.world.Lane[i].type==1) {
                 for (int j = 0; j < Main.world.Lane[i].Autos.length; j++) {
-                    if (Main.world.Lane[i].Autos[j] != null && Main.world.Lane[i].Autos[j].AutoBox != null) {
-                        if (hitbox.intersects(Main.world.Lane[i].Autos[j].AutoBox)) {
+                    if (Main.world.Lane[i].Autos[j] != null && Main.world.Lane[i].Autos[j].GegnerBox != null) {
+                        if (hitbox.intersects(Main.world.Lane[i].Autos[j].GegnerBox)) {
                             return true;
                         }
                     }
@@ -37,8 +38,5 @@ public class Player {
         }
         return false;
     }
-    public void bewegen() {
-        score = score+1;
-        hitbox.y -= 60;
-    }
+
 }
