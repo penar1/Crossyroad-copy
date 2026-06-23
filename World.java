@@ -15,6 +15,7 @@ public void World() {
     {
         Lane[i].Lane(0,0);
     }
+        Lane[i].GegnerGen();
     }
 }
   public void LaneGen()

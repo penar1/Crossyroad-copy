@@ -16,7 +16,7 @@ public class Lanes {
     public Lanes()
     {
         settype((int) (Math.random() * 3));
-        GegnerGen();
+
         try {
             Gras = ImageIO.read(new File("Gras(normal).png"));
         } catch (IOException e) {
@@ -84,6 +84,7 @@ public class Lanes {
                     for(int i =0; i<Autos.length; i++)
                         {
                             Autos[i] = new Auto();
+                            Autos[i].Yposition = LaneBox.y;
 
                         }
                     break;

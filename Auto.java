@@ -1,5 +1,6 @@
 import java.awt.*;
 
+
 public class Auto extends Gegner{
 
     int Geschwindigkeit=50;
@@ -8,7 +9,7 @@ public class Auto extends Gegner{
 
     public Auto()
     {
-        Rectangle AutoBox = new Rectangle( Xposition,  Yposition, 120, 90);
+        AutoBox = new Rectangle( 0,  Yposition, 120, 90);
 
     }
 
