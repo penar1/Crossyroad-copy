@@ -41,7 +41,10 @@ public class Main extends JPanel implements Runnable {
     }
 
     public void update() {
-        player.CollisionCheck();
+        if(player.CollisionCheck()==true)
+        {
+            GameOver();
+        }
 
 
 
@@ -129,6 +132,12 @@ public class Main extends JPanel implements Runnable {
         }
     }
 
+    public void GameOver()
+    {
+        world=new World();
+        world.World();
+        player = new Player(370, 500);
+    }
     public static void main(String[] args) {
         Main.world = new World();
         world.World();

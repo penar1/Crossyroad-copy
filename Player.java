@@ -20,7 +20,7 @@ public class Player {
                 for(int j=0; j<Main.world.Lane[i].Zuge.length;j++) {
                     if(Main.world.Lane[i].Zuge[j]!=null&&Main.world.Lane[i].Zuge[j].ZugBox!=null) {
                         if (hitbox.intersects(Main.world.Lane[i].Zuge[j].ZugBox)) {
-                            System.out.println("ja");
+
                             return true;
                         }
                     }

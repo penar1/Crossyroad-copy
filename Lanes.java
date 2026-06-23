@@ -32,34 +32,23 @@ public class Lanes {
 
     public void draw(Graphics g)
     {
-
-        switch (type) {
-            case 0:
-
-                if(Gras!=null) {
-                    g.drawImage(Gras, LaneBox.x, LaneBox.y, 800, 120, null);
-                }
-                break;
-            case 1:
-                g.setColor(Color.GRAY);
-                break;
-            case 2:
-                g.setColor(Color.DARK_GRAY);
-                break;
+        if (type == 0) {
+            if (Gras != null) {
+                g.drawImage(Gras, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height/2, null);
+                g.drawImage(Gras, LaneBox.x, LaneBox.y+ LaneBox.height/2, LaneBox.width, LaneBox.height/2, null);
+            }
         }
-        g.fillRect(
-                LaneBox.x,
-                LaneBox.y,
-                LaneBox.width,
-                LaneBox.height
-        );
+        else if (type == 1) {
+            g.setColor(Color.GRAY);
+            g.fillRect(LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height);
+        }
+        else if (type == 2) {
+            g.setColor(Color.DARK_GRAY);
+            g.fillRect(LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height);
+        }
+
         g.setColor(Color.BLACK);
-        g.drawRect(
-                LaneBox.x,
-                LaneBox.y,
-                LaneBox.width,
-                LaneBox.height
-        );
+        g.drawRect(LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height);
     }
 
         //random bodenart
