@@ -9,12 +9,18 @@ public class Main extends JPanel implements Runnable {
     static World world;
     static Player player;
     static Zug zug;
+
     private Image Frosch;
+    private Image Frosche;
     public Image Gras;
-    boolean leftPressed = false;
-    boolean rightPressed = false;
-    boolean upPressed = false;
-    boolean downPressed = false;
+    public Image AutoBild;
+    public Image ZugBild;
+
+    private boolean isJumping = false;
+    private int jumpProgress = 0;
+    private final int JUMP_DURATION = 15; // frames
+    private int startX, startY;
+    private int targetX, targetY;
 
     public Main()
     {
@@ -22,7 +28,10 @@ public class Main extends JPanel implements Runnable {
 
         try {
             Frosch = ImageIO.read(new File("Frog(Normal).png"));
+            Frosche = ImageIO.read(new File ("Frog(Springen).png"));
             Gras = ImageIO.read(new File("Gras(normal).png"));
+            AutoBild = ImageIO.read(new File("Polizeiauto(normal).png"));
+            ZugBild = ImageIO.read(new File("Zug(normal).png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,20 +40,71 @@ public class Main extends JPanel implements Runnable {
         {
             @Override
             public void keyPressed(KeyEvent e)
-            {
-                if (e.getKeyCode() == KeyEvent.VK_A) player.x -= 120;
-                if (e.getKeyCode() == KeyEvent.VK_W) player.y -= 120;
-                if (e.getKeyCode() == KeyEvent.VK_S) player.y += 120;
-                if (e.getKeyCode() == KeyEvent.VK_D) player.x += 120;
+            {   if (e.getKeyCode() == KeyEvent.VK_A && !isJumping) {
+                isJumping = true;
+                jumpProgress = 0;
+
+                startX = player.x;
+                startY = player.y;
+
+                targetX = player.x - 120;
+                targetY = player.y;
+            }
+                if (e.getKeyCode() == KeyEvent.VK_W && !isJumping) {
+                    isJumping = true;
+                    jumpProgress = 0;
+
+                    startX = player.x;
+                    startY = player.y;
+
+                    targetX = player.x;
+                    targetY = player.y - 120;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_S && !isJumping) {
+                    isJumping = true;
+                    jumpProgress = 0;
+
+                    startX = player.x;
+                    startY = player.y;
+
+                    targetX = player.x;
+                    targetY = player.y + 120;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_D && !isJumping) {
+                    isJumping = true;
+                    jumpProgress = 0;
+
+                    startX = player.x;
+                    startY = player.y;
+
+                    targetX = player.x + 120;
+                    targetY = player.y;
+                }
             }
         });
     }
 
     public void update() {
+
+        if (isJumping) {
+            jumpProgress++;
+
+            double t = (double) jumpProgress / JUMP_DURATION;
+
+            if (t >= 1.0) {
+                player.y = targetY;
+                isJumping = false;
+            } else {
+                player.x = (int)(startX + (targetX - startX) * t);
+                player.y = (int)(startY + (targetY - startY) * t);
+            }
+        }
+
         if(player.CollisionCheck()==true)
         {
             GameOver();
         }
+
 
 
 
@@ -66,7 +126,8 @@ public class Main extends JPanel implements Runnable {
             {
                 for(int j=0;j<world.Lane[i].Zuge.length;j++)
                 {
-                    world.Lane[i].Zuge[j].bewegen();
+                    world.Lane[i].Zuge[j].ZugBox.x =world.Lane[i].Zuge[j].XPosition;
+                    world.Lane[i].Zuge[j].ZugBox.y =world.Lane[i].Zuge[j].YPosition;
                 }
 
             }
@@ -88,28 +149,27 @@ public class Main extends JPanel implements Runnable {
         g.drawString("Score: " + player.score, 10, 30);
 
         g.setColor(Color.BLUE);
-        if(Frosch != null)
+
+        Image currentSprite = isJumping ? Frosche : Frosch;
+
+        if(currentSprite != null)
         {
-            g.drawImage(Frosch, player.x, player.y, 64, 64, this);
+            g.drawImage(currentSprite, player.x, player.y, 64, 64, this);
         }
-//        g.fillRect(
-//                Player.hitbox.x,
-//                Player.hitbox.y,
-//                Player.hitbox.width,
-//                Player.hitbox.height
-//        );
-        g.setColor(Color.cyan);
+
         for(int i=0; i<world.Lane.length; i++)
         {
             if(world.Lane[i].type == 1) {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++) {
-                    if(world.Lane[i].Autos[j].GegnerBox!=null) {
-                        g.fillRect(
-                                world.Lane[i].Autos[j].GegnerBox.x,
-                                world.Lane[i].Autos[j].GegnerBox.y,
-                                world.Lane[i].Autos[j].GegnerBox.width,
-                                world.Lane[i].Autos[j].GegnerBox.height
-                        );
+                    if(world.Lane[i].Autos[j].GegnerBox!=null && AutoBild != null) {
+                        g.drawImage( AutoBild, world.Lane[i].Autos[j].GegnerBox.x, world.Lane[i].Autos[j].GegnerBox.y, world.Lane[i].Autos[j].GegnerBox.width, world.Lane[i].Autos[j].GegnerBox.height, this);
+                    }
+                }
+            }
+            if(world.Lane[i].type == 2) {
+                for(int l =0; l<world.Lane[i].Zuge.length; l++) {
+                    if(world.Lane[i].Zuge[l].ZugBox != null && ZugBild != null) {
+                        g.drawImage(ZugBild, world.Lane[i].Zuge[l].ZugBox.x, world.Lane[i].Zuge[l].ZugBox.y, world.Lane[i].Zuge[l].ZugBox.width, world.Lane[i].Zuge[l].ZugBox.height, this);
                     }
                 }
             }

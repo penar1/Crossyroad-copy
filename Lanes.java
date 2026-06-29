@@ -82,6 +82,8 @@ public class Lanes {
                     for(int k=0; k<Zuge.length; k++)
                         {
                             Zuge[k] = new Zug();
+                            Zuge[k].Yposition = LaneBox.y;
+                            System.out.println(Zuge[k].ZugBox);
                         }
                     break;
             }

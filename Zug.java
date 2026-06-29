@@ -5,6 +5,7 @@ public class Zug extends Gegner{
 Rectangle ZugBox;
 int Geschwindigkeit=80;
 int XPosition=800;
+int YPosition;
 public Zug()
 {
     ZugBox= new Rectangle(XPosition, Yposition, 120, 100);
@@ -14,6 +15,8 @@ public Zug()
     {
 
     }
+    while(XPosition>-120) {
         bewegen();
+    }
 }
 }
