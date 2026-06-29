@@ -7,7 +7,7 @@ public class Auto extends Gegner{
 
     public Auto(int x, int y)
     {
-        GegnerBox = new Rectangle( x,  y, 120, 90);
+        GegnerBox = new Rectangle( x,  y, 200, 100);
 
     }
 

@@ -6,17 +6,16 @@ Rectangle ZugBox;
 int Geschwindigkeit=80;
 int XPosition=800;
 int YPosition;
-public Zug()
-{
-    ZugBox= new Rectangle(XPosition, Yposition, 120, 100);
+public Zug() {
+    ZugBox = new Rectangle(XPosition, Yposition, 468, 100);
     long start = System.currentTimeMillis();
 
-    while(System.currentTimeMillis() - start < ((int) Math.random()*4000) +1)
-    {
+    while (System.currentTimeMillis() - start < ((int) Math.random() * 4000) + 1) {
 
     }
-    while(XPosition>-120) {
+    for(int i=10;i>0;i--){
         bewegen();
     }
+
 }
 }
