@@ -10,6 +10,8 @@ public class Main extends JPanel implements Runnable {
     static Player player;
     static Zug zug;
 
+    private volatile boolean moveUpRequested = false;
+
     private Image Frosch;
     private Image Frosche;
     public Image Gras;
@@ -59,7 +61,7 @@ public class Main extends JPanel implements Runnable {
 
                     targetX = player.x;
                     targetY = player.y;
-                    world.LaneGen();
+                    moveUpRequested=true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_S && !isJumping) {
                     isJumping = true;
@@ -106,12 +108,16 @@ public class Main extends JPanel implements Runnable {
             GameOver();
         }
 
+        if (moveUpRequested) {
+            world.LaneGen();
+            moveUpRequested = false;
+        }
 
         player.hitbox.x = player.x;
         player.hitbox.y = player.y;
         for(int i=0;i<world.Lane.length;i++)
         {
-            if(world.Lane[i].type==1)
+            if(world.Lane[i].type==1&&world.Lane[i].Autos!=null)
             {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++)
                 {
@@ -121,11 +127,11 @@ public class Main extends JPanel implements Runnable {
                         world.Lane[i].Autos[j].GegnerBox.x = -100;
                     }
                     world.Lane[i].Autos[j].Xposition=world.Lane[i].Autos[j].GegnerBox.x;
-                    world.Lane[i].Autos[j].Yposition=world.Lane[i].Autos[j].GegnerBox.y;
+                    world.Lane[i].Autos[j].Yposition=world.Lane[i].Autos[j].GegnerBox.y=world.Lane[i].LaneBox.y;
 
                 }
             }
-            if(world.Lane[i].type==2)
+            if(world.Lane[i].type==2&&world.Lane[i].Zuge!=null)
             {
                 for(int j=0;j<world.Lane[i].Zuge.length;j++)
                 {
@@ -164,14 +170,14 @@ public class Main extends JPanel implements Runnable {
 
         for(int i=0; i<world.Lane.length; i++)
         {
-            if(world.Lane[i].type == 1) {
+            if(world.Lane[i].type == 1&&world.Lane[i].Autos!=null) {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++) {
                     if(world.Lane[i].Autos[j].GegnerBox!=null && AutoBild != null) {
                         g.drawImage( AutoBild, world.Lane[i].Autos[j].GegnerBox.x, world.Lane[i].Autos[j].GegnerBox.y, world.Lane[i].Autos[j].GegnerBox.width, world.Lane[i].Autos[j].GegnerBox.height, this);
                     }
                 }
             }
-            if(world.Lane[i].type == 2) {
+            if(world.Lane[i].type == 2&&world.Lane[i].Zuge!=null) {
                 for(int l =0; l<world.Lane[i].Zuge.length; l++) {
                     if(world.Lane[i].Zuge[l].ZugBox != null && ZugBild != null) {
                         g.drawImage(ZugBild, world.Lane[i].Zuge[l].ZugBox.x, world.Lane[i].Zuge[l].ZugBox.y, world.Lane[i].Zuge[l].ZugBox.width, world.Lane[i].Zuge[l].ZugBox.height, this);
@@ -202,11 +208,15 @@ public class Main extends JPanel implements Runnable {
         world=new World();
         world.World();
         player = new Player(400, 500);
+        Main.player.x=350;
+        Main.player.y=500;
     }
     public static void main(String[] args) {
         Main.world = new World();
         world.World();
         Main.player = new Player(400, 500);
+        Main.player.x=350;
+        Main.player.y=500;
         JFrame window = new JFrame();
 
 
