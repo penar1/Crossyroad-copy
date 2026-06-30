@@ -128,9 +128,10 @@ public class Main extends JPanel implements Runnable {
             {
                 for(int j=0;j<world.Lane[i].Zuge.length;j++)
                 {
-                    world.Lane[i].Zuge[j].ZugBox.x =world.Lane[i].Zuge[j].XPosition;
-                    world.Lane[i].Zuge[j].ZugBox.y =world.Lane[i].LaneBox.y;
-                    System.out.println(world.Lane[i].Zuge[j].ZugBox);
+                    world.Lane[i].Zuge[j].ZugBox.x = world.Lane[i].Zuge[j].XPosition;
+                    world.Lane[i].Zuge[j].ZugBox.y = world.Lane[i].LaneBox.y;
+                    System.out.println(world.Lane[i].Zuge[j].XPosition);
+                    world.Lane[i].Zuge[j].bewegen();
                 }
 
             }
