@@ -17,6 +17,8 @@ public class Main extends JPanel implements Runnable {
     public Image Gras;
     public Image AutoBild;
     public Image ZugBild;
+    public Image Straße;
+    public  Image Gleis;
 
     private boolean isJumping = false;
     private int jumpProgress = 0;
@@ -34,6 +36,9 @@ public class Main extends JPanel implements Runnable {
             Gras = ImageIO.read(new File("Gras(normal).png"));
             AutoBild = ImageIO.read(new File("Polizeiauto(normal).png"));
             ZugBild = ImageIO.read(new File("Zug(normal).png"));
+            Straße = ImageIO.read(new File("Straße(normal).png"));
+            Gleis = ImageIO.read(new File("Gleis(normal).png"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }

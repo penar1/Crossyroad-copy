@@ -8,6 +8,8 @@ public class Lanes {
     int type;
     //anzahl züge
     Image Gras;
+    Image Straße;
+    Image Gleis;
 
     public Auto[] Autos;
     public Zug[] Zuge;
@@ -19,6 +21,8 @@ public class Lanes {
 
         try {
             Gras = ImageIO.read(new File("Gras(normal).png"));
+            Straße = ImageIO.read(new File("Straße(normal).png"));
+            Gleis = ImageIO.read(new File("Gleis(normal).png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -39,12 +43,16 @@ public class Lanes {
             }
         }
         else if (type == 1) {
-            g.setColor(Color.GRAY);
-            g.fillRect(LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height);
+            if (Straße != null) {
+                g.drawImage(Straße, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height/2, null);
+                g.drawImage(Straße, LaneBox.x, LaneBox.y+ LaneBox.height/2, LaneBox.width, LaneBox.height/2, null);
+            }
         }
         else if (type == 2) {
-            g.setColor(Color.DARK_GRAY);
-            g.fillRect(LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height);
+            if (Gleis != null) {
+                g.drawImage(Gleis, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height/2, null);
+                g.drawImage(Gleis, LaneBox.x, LaneBox.y+ LaneBox.height/2, LaneBox.width, LaneBox.height/2, null);
+            }
         }
 
         g.setColor(Color.BLACK);
