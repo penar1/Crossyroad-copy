@@ -115,10 +115,10 @@ public class Main extends JPanel implements Runnable {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++)
                 {
                     world.Lane[i].Autos[j].bewegen();
-//                    if(world.Lane[i].Autos[j].GegnerBox.x > 900)
-//                    {
-//                        world.Lane[i].Autos[j].Xposition = world.Lane[i].Autos[j].Xposition * 0;
-//                    }
+                    if(world.Lane[i].Autos[j].GegnerBox.x > 900)
+                    {
+                        world.Lane[i].Autos[j].GegnerBox.x = -100;
+                    }
                     world.Lane[i].Autos[j].Xposition=world.Lane[i].Autos[j].GegnerBox.x;
                     world.Lane[i].Autos[j].Yposition=world.Lane[i].Autos[j].GegnerBox.y;
 
@@ -200,12 +200,12 @@ public class Main extends JPanel implements Runnable {
     {
         world=new World();
         world.World();
-        player = new Player(370, 500);
+        player = new Player(400, 500);
     }
     public static void main(String[] args) {
         Main.world = new World();
         world.World();
-        Main.player = new Player(370, 500);
+        Main.player = new Player(400, 500);
         JFrame window = new JFrame();
 
 

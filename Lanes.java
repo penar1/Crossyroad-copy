@@ -72,7 +72,7 @@ public class Lanes {
                     Autos = new Auto[3];
                     for(int i =0; i<Autos.length; i++)
                         {
-                            Autos[i] = new Auto(i*-300, LaneBox.y);
+                            Autos[i] = new Auto(-i* (int)(Math.random()*900)+100, LaneBox.y);
 
 
                         }
