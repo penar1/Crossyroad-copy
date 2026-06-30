@@ -106,8 +106,6 @@ public class Main extends JPanel implements Runnable {
         }
 
 
-
-
         player.hitbox.x = player.x;
         player.hitbox.y = player.y;
         for(int i=0;i<world.Lane.length;i++)
@@ -117,6 +115,10 @@ public class Main extends JPanel implements Runnable {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++)
                 {
                     world.Lane[i].Autos[j].bewegen();
+//                    if(world.Lane[i].Autos[j].GegnerBox.x > 900)
+//                    {
+//                        world.Lane[i].Autos[j].Xposition = world.Lane[i].Autos[j].Xposition * 0;
+//                    }
                     world.Lane[i].Autos[j].Xposition=world.Lane[i].Autos[j].GegnerBox.x;
                     world.Lane[i].Autos[j].Yposition=world.Lane[i].Autos[j].GegnerBox.y;
 
