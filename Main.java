@@ -58,7 +58,8 @@ public class Main extends JPanel implements Runnable {
                     startY = player.y;
 
                     targetX = player.x;
-                    targetY = player.y - 120;
+                    targetY = player.y;
+                    world.LaneGen();
                 }
                 if (e.getKeyCode() == KeyEvent.VK_S && !isJumping) {
                     isJumping = true;
