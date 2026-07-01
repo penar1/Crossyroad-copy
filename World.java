@@ -1,34 +1,30 @@
 public class World {
+    public volatile Lanes[] Lane;   // volatile: ensures the EDT sees the latest published reference
+    public int[] Lanetype;
 
-  public Lanes[] Lane;
-  public int[] Lanetype;
-public void World() {
-    Lane = new Lanes[5];
-    for (int i = 0; i < Lane.length; i++) {
-    Lane[i] = new Lanes();
-    Lane[i].Lane(0, i * 120);
-    Lane[i].GegnerGen();
-    }
-}
-    public void LaneGen()
-    {
-
-        for (int i = 0; i < Lane.length; i++)
-        {
-            Lane[i].LaneBox.y += 120;
+    public void World() {
+        Lanes[] newLanes = new Lanes[Main.LANE_COUNT];
+        for (int i = 0; i < newLanes.length; i++) {
+            newLanes[i] = new Lanes();
+            newLanes[i].Lane(0, i * Main.TILE);
+            newLanes[i].GegnerGen();
         }
+        Lane = newLanes;
+    }
 
-
-        for (int i = 0; i < Lane.length; i++)
-        {
-            if (Lane[i].LaneBox.y >= 600)
-            {
-
-                Lane[i] = new Lanes();
-                Lane[i].Lane(0, 0);
-                Lane[i].GegnerGen();
+    public void LaneGen() {
+        Lanes[] currentLanes = Lane;
+        for (int i = 0; i < currentLanes.length; i++) {
+            currentLanes[i].LaneBox.y += Main.TILE;
+        }
+        for (int i = 0; i < currentLanes.length; i++) {
+            if (currentLanes[i].LaneBox.y >= Main.WINDOW_HEIGHT) {
+                Lanes fresh = new Lanes();
+                fresh.Lane(0, 0);
+                fresh.GegnerGen();
+                currentLanes[i] = fresh;
             }
         }
+        Main.player.score++;
     }
-
 }

@@ -10,6 +10,11 @@ public class Main extends JPanel implements Runnable {
     static Player player;
     static Zug zug;
 
+    public static final int FACTOR = 6;
+    public static final int TILE = 16 * FACTOR;
+    public static final int LANE_COUNT = 7;
+    public static final int WINDOW_WIDTH = 200 * FACTOR;
+    public static final int WINDOW_HEIGHT = TILE * LANE_COUNT;
     private volatile boolean moveUpRequested = false;
 
     private Image Frosch;
@@ -54,7 +59,7 @@ public class Main extends JPanel implements Runnable {
                 startX = player.x;
                 startY = player.y;
 
-                targetX = player.x - 120;
+                targetX = player.x - TILE;
                 targetY = player.y;
             }
                 if (e.getKeyCode() == KeyEvent.VK_W && !isJumping) {
@@ -76,7 +81,7 @@ public class Main extends JPanel implements Runnable {
                     startY = player.y;
 
                     targetX = player.x;
-                    targetY = player.y + 120;
+                    targetY = player.y + TILE;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_D && !isJumping) {
                     isJumping = true;
@@ -85,7 +90,7 @@ public class Main extends JPanel implements Runnable {
                     startX = player.x;
                     startY = player.y;
 
-                    targetX = player.x + 120;
+                    targetX = player.x + TILE;
                     targetY = player.y;
                 }
             }
@@ -136,16 +141,15 @@ public class Main extends JPanel implements Runnable {
 
                 }
             }
-            if(world.Lane[i].type==2&&world.Lane[i].Zuge!=null)
+            if(world.Lane[i].type==2 && world.Lane[i].Zuge!=null)
             {
                 for(int j=0;j<world.Lane[i].Zuge.length;j++)
                 {
+                    if (world.Lane[i].Zuge[j] == null) continue; // from earlier null-safety fix
+                    world.Lane[i].Zuge[j].bewegen();
                     world.Lane[i].Zuge[j].ZugBox.x = world.Lane[i].Zuge[j].XPosition;
                     world.Lane[i].Zuge[j].ZugBox.y = world.Lane[i].LaneBox.y;
-                    System.out.println(world.Lane[i].Zuge[j].XPosition);
-                    world.Lane[i].Zuge[j].bewegen();
                 }
-
             }
 
         }
@@ -170,7 +174,7 @@ public class Main extends JPanel implements Runnable {
 
         if(currentSprite != null)
         {
-            g.drawImage(currentSprite, player.x, player.y, 64, 64, this);
+            g.drawImage(currentSprite, player.x, player.y, Player.SIZE, Player.SIZE, this);
         }
 
         for(int i=0; i<world.Lane.length; i++)
@@ -213,15 +217,15 @@ public class Main extends JPanel implements Runnable {
         world=new World();
         world.World();
         player = new Player(400, 500);
-        Main.player.x=350;
-        Main.player.y=500;
+        Main.player.x=WINDOW_WIDTH/2;
+        Main.player.y=WINDOW_HEIGHT-Player.hitbox.height;
     }
     public static void main(String[] args) {
         Main.world = new World();
         world.World();
         Main.player = new Player(400, 500);
-        Main.player.x=350;
-        Main.player.y=500;
+        Main.player.x=WINDOW_WIDTH/2;
+        Main.player.y=WINDOW_HEIGHT-Player.hitbox.height;
         JFrame window = new JFrame();
 
 
@@ -229,7 +233,7 @@ public class Main extends JPanel implements Runnable {
 
         window.add(game);
 
-        window.setSize(800, 600);
+        window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT + 39);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         game.requestFocusInWindow();

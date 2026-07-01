@@ -1,16 +1,16 @@
 import java.awt.*;
 public class Player {
 
+    static final int SIZE = 16 * Main.FACTOR; // 64
     int y;
     int x;
     int speed;
     static Rectangle hitbox;
-    int score=0;
-    boolean Collision=false;
+    int score = 0;
 
-    public Player(int x,int y) {
-        speed=60;
-        hitbox = new Rectangle(x, y, 50, 50);
+    public Player(int x, int y) {
+        speed = Main.TILE; // 64 — movement step now matches grid unit, see note below
+        hitbox = new Rectangle(x, y, SIZE, SIZE);
     }
     public boolean CollisionCheck()
     {

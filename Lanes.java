@@ -31,33 +31,23 @@ public class Lanes {
 
     public void Lane(int x, int y)
     {
-        LaneBox =  new Rectangle(x, y, 800, 600/5);
+        LaneBox = new Rectangle(x, y, 200 * Main.FACTOR, Main.TILE);
     }
 
-    public void draw(Graphics g)
-    {
-        if (type == 0) {
-            if (Gras != null) {
-                g.drawImage(Gras, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height/2, null);
-                g.drawImage(Gras, LaneBox.x, LaneBox.y+ LaneBox.height/2, LaneBox.width, LaneBox.height/2, null);
+    public void draw(Graphics g) {
+        if (type == 0 && Gras != null) {
+                g.drawImage(Gras, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height, null);
             }
-        }
-        else if (type == 1) {
-            if (Straße != null) {
-                g.drawImage(Straße, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height/2, null);
-                g.drawImage(Straße, LaneBox.x, LaneBox.y+ LaneBox.height/2, LaneBox.width, LaneBox.height/2, null);
+        else if (type == 1 && Straße != null) {
+                g.drawImage(Straße, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height, null);
             }
-        }
-        else if (type == 2) {
-            if (Gleis != null) {
-                g.drawImage(Gleis, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height/2, null);
-                g.drawImage(Gleis, LaneBox.x, LaneBox.y+ LaneBox.height/2, LaneBox.width, LaneBox.height/2, null);
+        else if (type == 2 && Gleis != null) {
+                g.drawImage(Gleis, LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height, null);
             }
-        }
-
         g.setColor(Color.BLACK);
         g.drawRect(LaneBox.x, LaneBox.y, LaneBox.width, LaneBox.height);
     }
+
 
         //random bodenart
     public int settype(int type) 
@@ -86,7 +76,7 @@ public class Lanes {
                         }
                     break;
                 case 2:
-                    Zuge = new Zug[5];
+                    Zuge = new Zug[1];
                     for(int k=0; k<Zuge.length; k++)
                         {
                             Zuge[k] = new Zug();
