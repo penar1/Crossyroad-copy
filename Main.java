@@ -132,7 +132,7 @@ public class Main extends JPanel implements Runnable {
                 for (int j = 0; j < world.Lane[i].Autos.length; j++)
                 {
                     world.Lane[i].Autos[j].bewegen();
-                    if(world.Lane[i].Autos[j].GegnerBox.x > 900)
+                    if(world.Lane[i].Autos[j].GegnerBox.x > 1100)
                     {
                         world.Lane[i].Autos[j].GegnerBox.x = -100;
                     }
@@ -145,7 +145,7 @@ public class Main extends JPanel implements Runnable {
             {
                 for(int j=0;j<world.Lane[i].Zuge.length;j++)
                 {
-                    if (world.Lane[i].Zuge[j] == null) continue; // from earlier null-safety fix
+                    if (world.Lane[i].Zuge[j] == null) continue;
                     world.Lane[i].Zuge[j].bewegen();
                     world.Lane[i].Zuge[j].ZugBox.x = world.Lane[i].Zuge[j].XPosition;
                     world.Lane[i].Zuge[j].ZugBox.y = world.Lane[i].LaneBox.y;
