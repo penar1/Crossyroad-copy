@@ -27,7 +27,7 @@ public class Main extends JPanel implements Runnable {
 
     private boolean isJumping = false;
     private int jumpProgress = 0;
-    private final int JUMP_DURATION = 15; // frames
+    private final int JUMP_DURATION = 40; // frames
     private int startX, startY;
     private int targetX, targetY;
 
@@ -205,7 +205,7 @@ public class Main extends JPanel implements Runnable {
             repaint();
 
             try {
-                Thread.sleep(16);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -233,7 +233,7 @@ public class Main extends JPanel implements Runnable {
 
         window.add(game);
 
-        window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT + 39);
+        window.setSize(WINDOW_WIDTH-5, WINDOW_HEIGHT + 20);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         game.requestFocusInWindow();

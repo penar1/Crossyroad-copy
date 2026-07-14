@@ -5,7 +5,7 @@ public class Zug extends Gegner {
     static final int WIDTH = 75 * Main.FACTOR;   // 300
     static final int HEIGHT = 16 * Main.FACTOR;  // 64, matches lane height exactly
     Rectangle ZugBox;
-    int Geschwindigkeit = 10;
+    int Geschwindigkeit = 7;
     int XPosition = -WIDTH;
     int YPosition;
     int startXPosition;
