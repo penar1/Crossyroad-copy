@@ -73,16 +73,16 @@ public class Main extends JPanel implements Runnable {
                     targetY = player.y;
                     moveUpRequested=true;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_S && !isJumping) {
-                    isJumping = true;
-                    jumpProgress = 0;
-
-                    startX = player.x;
-                    startY = player.y;
-
-                    targetX = player.x;
-                    targetY = player.y + TILE;
-                }
+//                if (e.getKeyCode() == KeyEvent.VK_S && !isJumping) {
+//                    isJumping = true;
+//                    jumpProgress = 0;
+//
+//                    startX = player.x;
+//                    startY = player.y;
+//
+//                    targetX = player.x;
+//                    targetY = player.y + TILE;
+//                }
                 if (e.getKeyCode() == KeyEvent.VK_D && !isJumping) {
                     isJumping = true;
                     jumpProgress = 0;
@@ -233,7 +233,7 @@ public class Main extends JPanel implements Runnable {
 
         window.add(game);
 
-        window.setSize(WINDOW_WIDTH-5, WINDOW_HEIGHT + 20);
+        window.setSize(WINDOW_WIDTH-6, WINDOW_HEIGHT + 29);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         game.requestFocusInWindow();
